@@ -1,7 +1,7 @@
 {
 	"network-configs": {
-		"first-network": {
-			"name": "firstnetwork",
+		"basic-network": {
+			"name": "basicnetwrk",
 			"profile": "./connection-profile/basic-network.json"
 		}
 	},
