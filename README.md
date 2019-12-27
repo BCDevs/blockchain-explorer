@@ -5,47 +5,48 @@
 
 [rocketchat-url]:https://chat.hyperledger.org/channel/hyperledger-explorer
 [rocketchat-image]:https://open.rocket.chat/images/join-chat.svg
-[![Build Status](https://jenkins.hyperledger.org/buildStatus/icon?job=blockchain-explorer-merge-x86_64)](https://jenkins.hyperledger.org/view/fabric/job/blockchain-explorer-merge-x86_64)
+[![Build Status](https://dev.azure.com/Hyperledger/blockchain-explorer/_apis/build/status/hyperledger.blockchain-explorer?branchName=master)](https://dev.azure.com/Hyperledger/blockchain-explorer/_build/latest?definitionId=41&branchName=master)
 [![CII Best Practice](https://bestpractices.coreinfrastructure.org/projects/2710/badge)](https://bestpractices.coreinfrastructure.org/projects/2710)
-[![Documentation Status](https://readthedocs.org/projects/blockchain-explorer/badge/?version=latest)](https://blockchain-explorer.readthedocs.io/en/latest/?badge=latest)
-
+[![Documentation Status](https://readthedocs.org/projects/blockchain-explorer/badge/?version=master)](https://blockchain-explorer.readthedocs.io/en/master/?badge=master)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/hyperledger/blockchain-explorer.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/hyperledger/blockchain-explorer/context:javascript)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/hyperledger/blockchain-explorer.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/hyperledger/blockchain-explorer/alerts/)
 <!-- badges -->
 
 Hyperledger Explorer is a simple, powerful, easy-to-use, well maintained, open source utility to browse activity on the underlying blockchain network. Users have the ability to configure and build Hyperledger Explorer on MacOS and Ubuntu.
 
 
+<a name="Table of Contents" />
 
 # Table of Contents    <!-- do not remove this comment, ensure there is a blank line before each heading -->
 
-- [Hyperledger Explorer [![join the chat][rocketchat-image]][rocketchat-url]](#hyperledger-explorer-join-the-chatrocketchat-imagerocketchat-url)
-- [Table of Contents ](#table-of-contents)
-- [1.0 Release Notes ](#10-release-notes)
-- [2.0 Directory Structure ](#20-directory-structure)
-- [3.0 Dependencies ](#30-dependencies)
-- [4.0 Clone GIT Repository ](#40-clone-git-repository)
-- [5.0 Database Setup ](#50-database-setup)
-- [5.1 Authorization Configuration ](#51-authorization-configuration)
-- [6.0 Fabric Network Setup ](#60-fabric-network-setup)
-- [7.0 Configure Hyperledger Fabric ](#70-configure-hyperledger-fabric)
-- [7.1 Optional: Configure Fabcar Sample ](#71-optional-configure-fabcar-sample)
-- [7.2 Optional: Configure Balance Transfer Sample ](#72-optional-configure-balance-transfer-sample)
-- [8.0 Hyperledger Composer Setup ](#80-hyperledger-composer-setup)
-  - [8.1 Configure Hyperledger Explorer for Composer ](#81-configure-hyperledger-explorer-for-composer)
-- [9.0 Optional: Hyperledger Cello Setup ](#90-optional-hyperledger-cello-setup)
-  - [9.1 Optional: Configure Hyperledger Explorer for Cello ](#91-optional-configure-hyperledger-explorer-for-cello)
-- [10.0 Build Hyperledger Explorer ](#100-build-hyperledger-explorer)
-- [10.1 Optional: Configure Hyperledger Explorer for HTTPS ](#101-optional-configure-hyperledger-explorer-for-https)
-- [11.0 Run Hyperledger Explorer ](#110-run-hyperledger-explorer)
-- [12.0 Optional: Run Hyperledger Explorer Using Docker ](#120-optional-run-hyperledger-explorer-using-docker)
-  - [12.1 Docker Repository ](#121-docker-repository)
-  - [12.2 Run Hyperledger Explorer Using Docker Compose ](#122-run-hyperledger-explorer-using-docker-compose)
-  - [12.3 Docker Troubleshooting ](#123-docker-troubleshooting)
-- [13.0 NPM Utility Scripts to Dockerize Application ](#130-npm-utility-scripts-to-dockerize-application)
-- [14.0 Hyperledger Explorer Swagger ](#140-hyperledger-explorer-swagger)
-- [15.0 Logs ](#150-logs)
-- [16.0 Troubleshooting ](#160-troubleshooting)
-- [17.0 Testing ](#170-testing)
-- [18.0 License ](#180-license)
+- [1.0 Release Notes ](#Release-Notes)
+- [2.0 Directory Structure ](#Directory-Structure)
+- [3.0 Dependencies ](#Dependencies)
+- [4.0 Clone GIT Repository ](#Clone-GIT-Repository)
+- [5.0 Database Setup ](#Database-Setup)
+- [5.1 Authorization Configuration ](#Authorization-Configuration)
+- [6.0 Fabric Network Setup ](#Fabric-Network-Setup)
+- [7.0 Configure Hyperledger Fabric ](#Configure-Hyperledger-Fabric)
+- [7.1 Optional: Configure Fabcar Sample ](#Configure-Fabcar-Sample)
+- [7.2 Optional: Configure Balance Transfer Sample ](#Configure-Balance-Transfer-Sample)
+- [8.0 Hyperledger Composer Setup ](#Hyperledger-Composer-Setup)
+  - [8.1 Configure Hyperledger Explorer for Composer ](#Configure-Hyperledger-Explorer-for-Composer)
+- [9.0 Optional: Hyperledger Cello Setup ](#Hyperledger-Cello-Setup)
+  - [9.1 Optional: Configure Hyperledger Explorer for Cello ](#Configure-Hyperledger-Explorer-for-Cello)
+- [10.0 Build Hyperledger Explorer ](#Build-Hyperledger-Explorer)
+- [10.1 Optional: Configure Hyperledger Explorer for HTTPS ](#Configure-Hyperledger-Explorer-for-HTTPS)
+- [11.0 Run Hyperledger Explorer ](#Run-Hyperledger-Explorer)
+  - [11.1 Configuration of logging ](#Run-Hyperledger-Explorer-Logging)
+- [12.0 Optional: Run Hyperledger Explorer Using Docker ](#Run-Hyperledger-Explorer-using-Docker)
+  - [12.1 Docker Repository ](#Docker-Repository)
+  - [12.2 Run Hyperledger Explorer Using Docker Compose ](#Run-Hyperledger-Explorer-using-Docker-Compose)
+  - [12.3 Docker Troubleshooting ](#Run-Hyperledger-Explorer-using-Docker-Compose-Troubleshooting)
+- [13.0 NPM Utility Scripts to Dockerize Application ](#NPM-Utility-Scripts-to-Dockerize-Application)
+- [14.0 Hyperledger Explorer Swagger ](#Hyperledger-Explorer-Swagger)
+- [15.0 Logs ](#Logs)
+- [16.0 Troubleshooting ](#Troubleshooting)
+- [17.0 Testing ](#Testing)
+- [18.0 License ](#License)
 
 
 
@@ -55,6 +56,8 @@ Hyperledger Explorer is a simple, powerful, easy-to-use, well maintained, open s
 
 | Hyperledger Explorer Version                                | Fabric Version Supported                                         | NodeJS Version Supported                          |
 | --                                                          | --                                                               | --                                                |
+| <b>[v1.0.0-rc2](release_notes/v1.0.0-rc2.md)</b> (Dec 10, 2019)  | [v1.4.0 to v1.4.4](https://hyperledger-fabric.readthedocs.io/en/release-1.4) | [8.11.x](https://nodejs.org/en/download/releases) |
+| <b>[v1.0.0-rc1](release_notes/v1.0.0-rc1.md)</b> (Nov 18, 2019)  | [v1.4.2](https://hyperledger-fabric.readthedocs.io/en/release-1.4) | [8.11.x](https://nodejs.org/en/download/releases) |
 | <b>[v0.3.9.5](release_notes/v0.3.9.5.md)</b> (Sep 8, 2019)  | [v1.4.2](https://hyperledger-fabric.readthedocs.io/en/release-1.4) | [8.11.x](https://nodejs.org/en/download/releases) |
 | <b>[v0.3.9.4](release_notes/v0.3.9.4.md)</b> (June 18, 2019) | [v1.4.1](https://hyperledger-fabric.readthedocs.io/en/release-1.4) | [8.11.x](https://nodejs.org/en/download/releases) |
 | <b>[v0.3.9.3](release_notes/v0.3.9.3.md)</b> (May 24, 2019) | [v1.4](https://hyperledger-fabric.readthedocs.io/en/release-1.4) | [8.11.x](https://nodejs.org/en/download/releases) |
@@ -249,7 +252,7 @@ On another terminal:
 # 7.1 Optional: Configure Fabcar Sample    <!-- do not remove this comment, ensure there is a blank line before each heading -->
 
 Setup Fabcar sample network by following [Fabcar Sample Network](https://hyperledger-fabric.readthedocs.io/en/release-1.4/understand_fabcar_network.html) from Hyperledger fabric samples.
-- Make sure to set the environment variables ```CORE_PEER_GOSSIP_BOOTSTRAP``` and ```CORE_PEER_GOSSIP_EXTERNAL_ENDPOINT``` for each peer in the docker-compose.yaml file. These settings enable the Fabric discovery service, which is used by Hyperledger Explorer to discover the network topology.
+- Make sure to set the environment variables ```CORE_PEER_GOSSIP_BOOTSTRAP``` and ```CORE_PEER_GOSSIP_EXTERNALENDPOINT``` for each peer in the docker-compose.yaml file. These settings enable the Fabric discovery service, which is used by Hyperledger Explorer to discover the network topology.
 - Configure Fabcar sample network based on this link [CONFIG-FABCAR-HLEXPLORER.md](CONFIG-FABCAR-HLEXPLORER.md)
 
 
@@ -346,7 +349,7 @@ Or
 - `npm run test:ci -- -u --coverage`
 - `npm run build`
 
-<a name="Config-https-Hyperledger-Explorer" />
+<a name="Configure-Hyperledger-Explorer-for-HTTPS" />
 
 # 10.1 Optional: Configure Hyperledger Explorer for HTTPS    <!-- do not remove this comment, ensure there is a blank line before each heading -->
 
@@ -399,7 +402,24 @@ From new terminal (if Sync Process in Standalone).
 - If the Hyperledger Explorer was used previously in your browser be sure to clear the cache before relaunching.
 - If Hyperledger Fabric network is deployed on other machine, please toggle DISCOVERY_AS_LOCALHOST in start.sh / syncstart.sh to 'false'.
 
+<a name="Run-Hyperledger-Explorer-Logging" />
 
+# 11.1 Configuration of logging    <!-- do not remove this comment, ensure there is a blank line before each heading -->
+
+By using the following environmet variables, you can control log level of each component (app, db and console). You can set these `ALL < TRACE < DEBUG < INFO < WARN < ERROR < FATAL < MARK < OFF` string to each level. Each file is rolled by both date (7days) and size (8MB).
+
+* LOG_LEVEL_APP
+  * Log level regarding application layer. The logs are written to `logs/app/app.log`.
+  * default `DEBUG`
+* LOG_LEVEL_DB
+  * Log level regarding backend layer. The logs are written to `logs/db/db.log`.
+  * default `DEBUG`
+* LOG_LEVEL_CONSOLE
+  * Log level regarding console. The logs are written to `logs/console/console.log`.
+  * default `INFO`
+* LOG_CONSOLE_STDOUT
+  * You can switch the destination of console log from file to standard output.
+  * default `false`
 
 <a name="Run-Hyperledger-Explorer-using-Docker" />
 
@@ -411,7 +431,7 @@ There is also an automated deployment of the **Hyperledger Explorer** available 
 * **Docker** is installed on deployment machine.
 * **Docker Compose** is installed on deployment machine.
 
-<a name="Docker-Docker-Repository" />
+<a name="Docker-Repository" />
 
 ## 12.1 Docker Repository   <!-- do not remove this comment, ensure there is a blank line before each heading -->
 
@@ -419,7 +439,7 @@ There is also an automated deployment of the **Hyperledger Explorer** available 
 * Hyperledger Explorer PostgreSQL docker repository `https://hub.docker.com/r/hyperledger/explorer-db`
 
 
-<a name="Run-Hyperledger-Explorer-Using-Docker-Compose" />
+<a name="Run-Hyperledger-Explorer-using-Docker-Compose" />
 
 ## 12.2 Run Hyperledger Explorer Using Docker Compose    <!-- do not remove this comment, ensure there is a blank line before each heading -->
 
@@ -467,7 +487,7 @@ There is also an automated deployment of the **Hyperledger Explorer** available 
     ```
 
 
-<a name="Run-Hyperledger-Explorer-Using-Docker-Compose-Troubleshooting" />
+<a name="Run-Hyperledger-Explorer-using-Docker-Compose-Troubleshooting" />
 
 ## 12.3 Docker Troubleshooting       <!-- do not remove this comment, ensure there is a blank line before each heading -->
 
